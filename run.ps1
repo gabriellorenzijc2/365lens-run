@@ -73,4 +73,10 @@ if (-not (Test-Path $startScript)) {
 }
 
 Write-Host
-& $startScript
+try {
+    & $startScript
+} finally {
+    Write-Host
+    Write-Host "  Pressione Enter para fechar..." -ForegroundColor Gray
+    $null = Read-Host
+}
